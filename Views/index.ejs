@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Photo Studio Bookings</title>
+</head>
+<body class="bg-light">
+  <h1 class="text-success">Photo Studio Bookings</h1>
+  <a class="text-info-emphasis" href="/book">Create New Booking</a>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Date</th>
+      <th>Service</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+    <% if( bookings) {%>
+    <% bookings.forEach(function(booking) { %>
+      <tr class="gap-4">
+        <td class="mx-2"><%= booking.name %></td>
+        <td><%= booking.email %></td>
+        <td><%= booking.phone %></td>
+        <td><%= booking.date %></td>
+        <td><%= booking.service %></td>
+        <td><%= booking.comments %></td>
+        <td>
+          <a href="/book/edit/<%= booking.id %>">Edit</a> |
+          <a href="/book/delete/<%= booking.id %>">Delete</a>
+        </td>
+      </tr>
+    <% }); %>
+    <%} else { %>
+      <div class="alert alert-info">No booking</div>
+      <%} %>
+  </table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
